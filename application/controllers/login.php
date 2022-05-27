@@ -66,15 +66,31 @@ class Login extends CI_Controller {
                     ));
                     $hduser_active = $this->row;
                     if(is_object($hduser_active) && isset($hduser_active->user_nama)){
-                        $_SESSION['PRI'] = "HDUSER";
-                        $_SESSION['USR'] = "9999";
+                        if($hduser_active->user_level == 2){
+                            $_SESSION['PRI'] = "HDUSER";
+                        }
+                        else if($hduser_active->user_level == 3){
+                            $_SESSION['PRI'] = "ITUSER";
+                        }
+                        if($hduser_active->user_level == 2){
+                            $_SESSION['USR'] = "9997";
+                        }
+                        else if($hduser_active->user_level == 3){
+                            $_SESSION['USR'] = "9999";
+                        }
                         $_SESSION['id'] = $hduser_active->user_nip;
                         $_SESSION['nama_lengkap'] = $hduser_active->user_nama;
                         $_SESSION['nomor_karyawan'] = $hduser_active->user_nip;
                         $_SESSION['username'] = $hduser_active->user_nama;
                         $_SESSION['userlevel'] = $hduser_active->user_level;
-                        $this->layout->render_alert("Welcome Satker.");
-                        Message::set("Berhasil login sebagai Satker.");
+                        if($hduser_active->user_level == 2){
+                            $this->layout->render_alert("Welcome Satker.");
+                            Message::set("Berhasil login sebagai Satker.");
+                        }
+                        else if($hduser_active->user_level == 3){
+                            $this->layout->render_alert("Welcome IT.");
+                            Message::set("Berhasil login sebagai IT.");
+                        }
                         redirect("home");
                     }
                 }

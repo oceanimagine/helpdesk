@@ -17,7 +17,7 @@ class process_menu {
         if(isset($_SESSION['PRI']) && $_SESSION['PRI'] == "SUPERADMIN"){
             $this->set_privilege_all();
         }
-        if(isset($_SESSION['PRI']) && ($_SESSION['PRI'] == "ADMIN" || $_SESSION['PRI'] == "HDUSER")){
+        if(isset($_SESSION['PRI']) && ($_SESSION['PRI'] == "ADMIN" || $_SESSION['PRI'] == "HDUSER" || $_SESSION['PRI'] == "ITUSER")){
             if(isset($_SESSION['USR'])){
                 $this->set_privilege($_SESSION['USR']);
             }
