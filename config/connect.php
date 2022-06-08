@@ -29,7 +29,7 @@ $GLOBALS['host'] = $host;
 $GLOBALS['user'] = $user;
 $GLOBALS['pass'] = $pass;
 $GLOBALS['data'] = $data;
-$GLOBALS['tinymce_base'] = $GLOBALS['base_administrator'] . "application/layout/lite/js/tinymce/js/tinymce/plugins/jbimages/images";
+$GLOBALS['tinymce_base'] = "../../application/layout/lite/js/tinymce/js/tinymce/plugins/jbimages/images";
 $GLOBALS['privilege_satker'] = array(
     "2" => true
 );
