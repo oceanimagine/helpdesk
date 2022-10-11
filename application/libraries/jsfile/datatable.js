@@ -91,9 +91,11 @@ $(document).ready(function () {
             }
             if(prioritas.value !== ""){
                 all_params = all_params + symbol + "prioritas=" + prioritas.value;
+                symbol = "&";
             }
             if(kejadian_status.value !== ""){
                 all_params = all_params + symbol + "kejadian_status=" + kejadian_status.value;
+                symbol = "&";
             }
             url_data = url_temp + (all_params !== "" ? "?" + all_params : "");
             console.log(url_data);

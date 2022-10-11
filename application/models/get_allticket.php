@@ -38,9 +38,11 @@ class get_allticket extends CI_Model {
         }
         if($prioritas != ""){
             $clouse = $clouse . $and . " b.prioritas = '" . $prioritas . "'";
+            $and = " and ";
         }
         if($kejadian_status != ""){
             $clouse = $clouse . $and . " b.kejadian_status = '" . $kejadian_status . "'";
+            $and = " and ";
         }
         
         if($clouse != ""){

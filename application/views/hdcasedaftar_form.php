@@ -74,11 +74,17 @@
                         <option value="<?php echo $data->user_nip; ?>" <?php echo $selected; ?>><?php echo $data->inputnama . " :: " . $data->user_nip; ?></option>
                         <?php } ?>
                     </select>
-                    <?php if(isset($_SESSION['nomor_karyawan']) && $_SESSION['nomor_karyawan'] != ""){ ?>
+                    <?php if(isset($_SESSION['nomor_karyawan']) && $_SESSION['nomor_karyawan'] != "" && !isset($penyelesaian_nip)){ ?>
                     <script type="text/javascript">
                     get_satker({"value" : "<?php echo $_SESSION['nomor_karyawan']; ?>"});
                     </script>
                     <input type="hidden" name="pelapor_nip" value="<?php echo $_SESSION['nomor_karyawan']; ?>" />
+                    <?php } ?>
+                    <?php if(isset($penyelesaian_nip)){ ?>
+                    <script type="text/javascript">
+                    get_nama({"value" : "<?php echo $penyelesaian_nip; ?>"});
+                    </script>
+                    <input type="hidden" name="penyelesaian_nip" value="<?php echo $penyelesaian_nip; ?>" />
                     <?php } ?>
                 </div>
             </div>
@@ -176,6 +182,7 @@
             </div>
             
             <!-- User TI Only -->
+            <?php $disabled_ = ""; ?>
             <?php if((isset($_SESSION['userlevel']) && isset($GLOBALS['privilege_ti'][$_SESSION['userlevel']]) && $GLOBALS['privilege_ti'][$_SESSION['userlevel']])){ ?>
             <div class="form-group">
                 <label for="pelapor_nip" class="col-lg-2 control-label">Pelapor Nip</label>
@@ -236,7 +243,10 @@
             
             <script type="text/javascript">
             var disabled_textarea = {
-                "kejadian_deskripsi" : true
+                "kejadian_deskripsi" : true,
+                <?php if(isset($kejadian_status) && $kejadian_status == "close" && $penyelesaian_nip != $_SESSION['nomor_karyawan']){ $disabled_ = " disabled=''"; ?>
+                "penyelesaian_keterangan" : true,      
+                <?php } ?>
             };
             </script>
             
@@ -245,7 +255,7 @@
             <div class="form-group">
                 <label for="kejadian_status" class="col-lg-2 control-label">Kejadian Status</label>
                 <div class="col-lg-10">
-                    <select name="kejadian_status" id="kejadian_status" class="form-control">
+                    <select <?php echo $disabled_; ?> name="kejadian_status" id="kejadian_status" class="form-control">
                         <option value="open" <?php echo isset($kejadian_status) && $kejadian_status == "open" ? " selected" : ""; ?>>Open</option>
                         <option value="close" <?php echo isset($kejadian_status) && $kejadian_status == "close" ? " selected" : ""; ?>>Close</option>
                         <option value="pending" <?php echo isset($kejadian_status) && $kejadian_status == "pending" ? " selected" : ""; ?>>Pending</option>
@@ -263,7 +273,7 @@
             <div class="form-group">
                 <label for="penyelesaian_tgl" class="col-lg-2 control-label">Penyelesaian Tanggal</label>
                 <div class="col-lg-10">
-                    <input type="text" id="penyelesaian_tgl" class="form-control tanggal_pilih" name="penyelesaian_tgl" placeholder="Penyelesaian Tanggal" value="<?php echo isset($penyelesaian_tgl) && $penyelesaian_tgl != "" ? $penyelesaian_tgl : date("Y-m-d"); ?>">
+                    <input <?php echo $disabled_; ?> type="text" id="penyelesaian_tgl" class="form-control tanggal_pilih" name="penyelesaian_tgl" placeholder="Penyelesaian Tanggal" value="<?php echo isset($penyelesaian_tgl) && $penyelesaian_tgl != "" ? $penyelesaian_tgl : date("Y-m-d"); ?>">
                 </div>
             </div>
             <?php } ?>
@@ -288,7 +298,7 @@
             
             <div class="form-group">
                 <div class="col-lg-6 col-md-6" style="margin-bottom: 40px;">
-                    <button style="width: 100%; background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #f1f1f1), color-stop(1, #ffffff)) !important; color: black; border-color: #adadad;" type="submit" class="btn btn-info pull-right bg-light-blue-gradient" name="input_hdcasedaftar" value="Input Hdcasedaftar">Input Hdcasedaftar</button>
+                    <button <?php echo $disabled_; ?> style="width: 100%; background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #f1f1f1), color-stop(1, #ffffff)) !important; color: black; border-color: #adadad;" type="submit" class="btn btn-info pull-right bg-light-blue-gradient" name="input_hdcasedaftar" value="Input Hdcasedaftar">Input Hdcasedaftar</button>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <button style="width: 100%; background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #f1f1f1), color-stop(1, #ffffff)) !important;" type="button" class="btn btn-default bg-aqua-gradient" onclick="move_url('hdcasedaftar');">Lihat Data</button>
