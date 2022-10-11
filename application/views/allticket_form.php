@@ -227,10 +227,11 @@
                 </div>
             </div>
             
+            <?php if(isset($kejadian_status) && $kejadian_status == "close" && $penyelesaian_nip != $_SESSION['nomor_karyawan']){ $disabled_ = " disabled=''"; } ?>
             <div class="form-group">
                 <label for="prioritas" class="col-lg-2 control-label">Prioritas</label>
                 <div class="col-lg-10">
-                    <select name="prioritas" id="prioritas" class="form-control">
+                    <select <?php echo $disabled_; ?> name="prioritas" id="prioritas" class="form-control">
                         <option value="rendah" <?php echo isset($prioritas) && $prioritas == "rendah" ? " selected" : ""; ?>>Rendah</option>
                         <option value="sedang" <?php echo isset($prioritas) && $prioritas == "sedang" ? " selected" : ""; ?>>Sedang</option>
                         <option value="tinggi" <?php echo isset($prioritas) && $prioritas == "tinggi" ? " selected" : ""; ?>>Tinggi</option>
