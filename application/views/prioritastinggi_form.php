@@ -158,6 +158,7 @@ $prioritas = "tinggi";
             <?php } ?>
             
             <!-- User TI dan Admin -->
+            <?php $disabled_ = ""; ?>
             <?php if((isset($_SESSION['userlevel']) && isset($GLOBALS['privilege_ti'][$_SESSION['userlevel']]) && $GLOBALS['privilege_ti'][$_SESSION['userlevel']]) || ((isset($_SESSION['PRI']) && $_SESSION['PRI'] == "SUPERADMIN") || (isset($_SESSION['PRI']) && $_SESSION['PRI'] == "ADMIN"))){ ?>
             <div class="form-group">
                 <label for="penyelesaian_nip" class="col-lg-2 control-label">Penyelesaian Nip</label>
@@ -188,7 +189,6 @@ $prioritas = "tinggi";
             </div>
             
             <!-- User TI Only -->
-            <?php $disabled_ = ""; ?>
             <?php if((isset($_SESSION['userlevel']) && isset($GLOBALS['privilege_ti'][$_SESSION['userlevel']]) && $GLOBALS['privilege_ti'][$_SESSION['userlevel']])){ ?>
             <div class="form-group">
                 <label for="pelapor_nip" class="col-lg-2 control-label">Pelapor Nip</label>

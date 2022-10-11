@@ -153,8 +153,9 @@
                 </div>
             </div>  
             <?php } ?>
-            <?php $disabled_ = ""; ?>
+            
             <!-- User TI dan Admin -->
+            <?php $disabled_ = ""; ?>
             <?php if((isset($_SESSION['userlevel']) && isset($GLOBALS['privilege_ti'][$_SESSION['userlevel']]) && $GLOBALS['privilege_ti'][$_SESSION['userlevel']]) || ((isset($_SESSION['PRI']) && $_SESSION['PRI'] == "SUPERADMIN") || (isset($_SESSION['PRI']) && $_SESSION['PRI'] == "ADMIN"))){ ?>
             <div class="form-group">
                 <label for="penyelesaian_nip" class="col-lg-2 control-label">Penyelesaian Nip</label>
