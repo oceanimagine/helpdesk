@@ -29,5 +29,12 @@ $list_server = array(
         "pass" => "Helpdesk@12345",
         "data" => "u906809572_helpdesk",
         "base" => "/"
+    ),
+    "ykkbi.or.id" => array(
+        "host" => "localhost",
+        "user" => "website_helpdesk",
+        "pass" => "Helpdesk@12345",
+        "data" => "website_helpdesk",
+        "base" => "/"
     )
 );
