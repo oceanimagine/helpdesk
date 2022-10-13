@@ -35,6 +35,6 @@ $list_server = array(
         "user" => "website_helpdesk",
         "pass" => "Helpdesk@12345",
         "data" => "website_helpdesk",
-        "base" => "/"
+        "base" => "/applications/helpdesk/"
     )
 );
