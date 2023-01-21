@@ -1,0 +1,10 @@
+.content {
+    width: 80%;
+}
+.form-group label {
+    white-space: nowrap;
+}
+
+.form-group button {
+    width: 100%;
+}
